@@ -11,7 +11,7 @@ int main()
         float interestRate = 0.0;
         char command;
         printf("Transaction type?:  ");
-        scanf("%c",&command);
+        scanf(" %c",&command);
         switch (command)
         {
             case 'o':
