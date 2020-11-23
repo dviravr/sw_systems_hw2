@@ -8,6 +8,7 @@ int capacity = 0;
 void openAcount(double amount){
     if(capacity > 49){
         printf("We are apologies, the bank can not open new account in that moment.\n");
+        return;
     }
     int temp;
     for (size_t i = 0; i < 50; i++)
@@ -96,7 +97,7 @@ void addingInterest(float interestRate){
 
 void printAllOpenAcounts(){
      int temp = 0;
-     for (size_t i = 0; i < 50; i++)
+     for (int i = 0; i < 50; i++)
     {   
         if(bank[i][0]!=0){
             temp = 1;
