@@ -1,7 +1,7 @@
 #ifndef _MYBANK_H_
 #define _MYBANK_H_
 
-void openAcount(double anount);
+void openAcount(double amount);
 
 void chackBalance(int acountNumber);
 
