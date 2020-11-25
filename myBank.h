@@ -1,20 +1,20 @@
 #ifndef _MYBANK_H_
 #define _MYBANK_H_
 
-void openAcount(double amount);
+void openAccount(double amount);
 
-void chackBalance(int acountNumber);
+void checkBalance(int accountNumber);
 
-void deposit(int acountNumber, double amount);
+void deposit(int accountNumber, double amount);
 
-void withrawal(int acountNumber, double amount);
+void withdrawal(int accountNumber, double amount);
 
-void closeAcount(int acountNumber);
+void closeAccount(int accountNumber);
 
 void addingInterest(float interestRate);
 
-void printAllOpenAcounts();
+void printAllOpenAccounts();
 
-void closeAllAcounts();
+void closeAllAccounts();
 
 #endif
