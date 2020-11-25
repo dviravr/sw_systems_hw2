@@ -16,7 +16,6 @@ int main()
         float interestRate = 0.0;
         char command;
         printf("Transaction type?:  ");
-        cleanBuffer();
         scanf(" %c",&command);
         cleanBuffer();        
         switch (command)
@@ -25,41 +24,49 @@ int main()
             case 'O':
                 printf("Initial deposit?:  ");
                 scanf("%lf",&amount);
-                openAccount(amount);
-                break;
+                cleanBuffer();
+				openAccount(amount);
+				break;
             case 'b':
             case 'B':
                 printf("Account number?:  ");
                 scanf("%d",&accountNumber);
-                checkBalance(accountNumber);
+                cleanBuffer();
+				checkBalance(accountNumber);
                 break;
             case 'd':
             case 'D':
                 printf("Account number?:  ");
                 scanf("%d",&accountNumber);
-                printf("Amount?:  ");
+                cleanBuffer();
+				printf("Amount?:  ");
                 scanf("%lf",&amount);
-                deposit(accountNumber, amount);
+                cleanBuffer();
+				deposit(accountNumber, amount);
                 break;    
             case 'w':
             case 'W':
                 printf("Account number?:  ");
                 scanf("%d",&accountNumber);
-                printf("Amount?:  ");
+                cleanBuffer();
+				printf("Amount?:  ");
                 scanf("%lf",&amount);
-                withdrawal(accountNumber, amount);
+                cleanBuffer();
+				withdrawal(accountNumber, amount);
                 break;
             case 'c':
             case 'C':
                 printf("Account number?:  ");
                 scanf("%d",&accountNumber);
-                closeAccount(accountNumber);
+                cleanBuffer();
+				closeAccount(accountNumber);
                 break;
             case 'i':
             case 'I':
                 printf("Interest rate?:  ");
                 scanf("%f",&interestRate);
-                addingInterest(interestRate);
+                cleanBuffer();
+				addingInterest(interestRate);
                 break;                
             case 'p':
             case 'P':
