@@ -1,14 +1,6 @@
 #include <stdio.h>
 #include "myBank.h"
 
-void cleanBuffer()
-{
-    // clean unnecessary characters
-    int n;
-    while ((n = getchar()) != EOF && n != '\n')
-        ;
-}
-
 int main()
 {
     int condition = 1;
@@ -28,55 +20,46 @@ int main()
                "P-Print\n"
                "E-Exit\n");
         scanf(" %c", &command);
-        cleanBuffer();
         switch (command)
         {
         case 'o':
         case 'O':
             printf("Please enter amount for initial deposit:  ");
             scanf("%lf", &amount);
-            cleanBuffer();
             openAccount(amount);
             break;
         case 'b':
         case 'B':
             printf("Please enter account number:  ");
             scanf("%d", &accountNumber);
-            cleanBuffer();
             checkBalance(accountNumber);
             break;
         case 'd':
         case 'D':
             printf("Please enter account number:  ");
             scanf("%d", &accountNumber);
-            cleanBuffer();
             printf("Please enter the amount to deposit:  ");
             scanf("%lf", &amount);
-            cleanBuffer();
             deposit(accountNumber, amount);
             break;
         case 'w':
         case 'W':
             printf("Please enter account number:  ");
             scanf("%d", &accountNumber);
-            cleanBuffer();
             printf("Please enter the amount to withdraw:  ");
             scanf("%lf", &amount);
-            cleanBuffer();
             withdrawal(accountNumber, amount);
             break;
         case 'c':
         case 'C':
             printf("Please enter account number:  ");
             scanf("%d", &accountNumber);
-            cleanBuffer();
             closeAccount(accountNumber);
             break;
         case 'i':
         case 'I':
             printf("Please enter interest rate:  ");
             scanf("%f", &interestRate);
-            cleanBuffer();
             addingInterest(interestRate);
             break;
         case 'p':
