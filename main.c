@@ -19,16 +19,16 @@ int main()
         float interestRate = 0.0;
         char command;
         printf("Please choose a transaction type:\n"
-                "O-Open Account\n"
-                "B-Balance Inquiry\n"
-                "D-Deposit\n"
-                "W-Withdrawal\n"
-                "C-Close Account\n"
-                "I-Interest\n"
-                "P-Print\n"
-                "E-Exit\n");
-        scanf(" %c",&command);
-        cleanBuffer();        
+               "O-Open Account\n"
+               "B-Balance Inquiry\n"
+               "D-Deposit\n"
+               "W-Withdrawal\n"
+               "C-Close Account\n"
+               "I-Interest\n"
+               "P-Print\n"
+               "E-Exit\n");
+        scanf(" %c", &command);
+        cleanBuffer();
         switch (command)
         {
         case 'o':
