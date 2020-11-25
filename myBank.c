@@ -70,8 +70,8 @@ void deposit(int accountNumber, double amount){
     }
 }
 
-void addingInterest(float interestRate)
-{
+void addingInterest(float interestRate){
+    
     if (interestRate < 0)
     {
         printf("The value entered is incorrect! Please try again.\n");
@@ -84,6 +84,8 @@ void addingInterest(float interestRate)
     }
     printf("The interest rate was added successfully!\n");
 }
+
+
 
 void printAllOpenAccounts(){
      int temp = 0;
