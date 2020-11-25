@@ -33,7 +33,7 @@ void openAccount(double amount){
 
 void checkBalance(int accountNumber){
     int index = accountNumber-SET_ACCOUNT_NUMBER;
-    if(bank[index][0]==0){
+    if((accountNumber>950)||(accountNumber<901)|| (bank[index][0]==0)){
         printf("Err :This account number dont exsist.\n");
     }
     else
@@ -45,7 +45,7 @@ void checkBalance(int accountNumber){
 
 void withdrawal(int accountNumber, double amount){
     int index = accountNumber-SET_ACCOUNT_NUMBER;
-    if(bank[index][0]==0){
+    if((accountNumber>950)||(accountNumber<901)|| (bank[index][0]==0)){
         printf("Err: This account number dont exsist.\n");
     }
     else if (bank[index][1] < amount)
@@ -59,7 +59,7 @@ void withdrawal(int accountNumber, double amount){
 
 void deposit(int accountNumber, double amount){
     int index = accountNumber-SET_ACCOUNT_NUMBER;
-    if(bank[index][0]==0){
+    if((accountNumber>950)||(accountNumber<901)|| (bank[index][0]==0)){
         printf("Err: This account number dont exsist.\n");
     }
     else
@@ -69,6 +69,23 @@ void deposit(int accountNumber, double amount){
     }
     }
 }
+
+
+void closeAccount(int acountNumber)
+{
+    int index = acountNumber - SET_ACOUNT_NUMBER;
+    if((accountNumber>950)||(accountNumber<901)|| (bank[index][0]==0))
+    {
+        printf("Err: This acount number dont exsist.\n");
+    }
+    else
+    {
+        bank[index][0] = 0;
+        printf("Account number %d successfully closed!\n", acountNumber);
+        capacity--;
+    }
+}
+
 
 void addingInterest(float interestRate){
     
