@@ -1,6 +1,6 @@
 #include "myBank.h"
 #include <stdio.h>
-#define SET_ACCOUNT_NUMBER 901;
+#define SET_ACCOUNT_NUMBER 901
 
 float bank[50][2]= {{0},{0}};
 int capacity = 0;
