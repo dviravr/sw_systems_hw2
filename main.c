@@ -6,11 +6,11 @@ int main()
     int condition = 1;
     while (condition)
     {
-        int accountNumber = 0;
-        double amount = 0.0;
-        float interestRate = 0.0;
+        int accountNumber;
+        double amount;
+        float interestRate;
         char command;
-        printf("Please choose a transaction type:\n"
+        printf("\nPlease choose a transaction type:\n"
                "O-Open Account\n"
                "B-Balance Inquiry\n"
                "D-Deposit\n"
@@ -24,43 +24,91 @@ int main()
         {
         case 'o':
         case 'O':
-            printf("Please enter amount for initial deposit:  ");
-            scanf("%lf", &amount);
-            openAccount(amount);
+            printf("Please enter amount for initial deposit: ");
+            if (scanf("%lf", &amount) == 1)
+            {
+                openAccount(amount);
+            }
+            else
+            {
+                printf("Failed to read the amount\n");
+            }
             break;
         case 'b':
         case 'B':
-            printf("Please enter account number:  ");
-            scanf("%d", &accountNumber);
-            checkBalance(accountNumber);
+            printf("Please enter account number: ");
+            if (scanf("%d", &accountNumber) == 1)
+            {
+                checkBalance(accountNumber);
+            }
+            else
+            {
+                printf("Failed to read the account number\n");
+            }
             break;
         case 'd':
         case 'D':
-            printf("Please enter account number:  ");
-            scanf("%d", &accountNumber);
-            printf("Please enter the amount to deposit:  ");
-            scanf("%lf", &amount);
-            deposit(accountNumber, amount);
+            printf("Please enter account number: ");
+            if (scanf("%d", &accountNumber) == 1)
+            {
+                printf("Please enter the amount to deposit: ");
+                if (scanf("%lf", &amount) == 1)
+                {
+                    deposit(accountNumber, amount);
+                }
+                else
+                {
+                    printf("Failed to read the amount\n");
+                }
+            }
+            else
+            {
+                printf("Failed to read the account number\n");
+            }
             break;
         case 'w':
         case 'W':
-            printf("Please enter account number:  ");
-            scanf("%d", &accountNumber);
-            printf("Please enter the amount to withdraw:  ");
-            scanf("%lf", &amount);
-            withdrawal(accountNumber, amount);
+            printf("Please enter account number: ");
+            if (scanf("%d", &accountNumber) == 1)
+            {
+                printf("Please enter the amount to withdraw: ");
+                if (scanf("%lf", &amount) == 1)
+                {
+                    withdrawal(accountNumber, amount);
+                }
+                else
+                {
+                    printf("Failed to read the amount\n");
+                }
+            }
+            else
+            {
+                printf("Failed to read the account number\n");
+            }
             break;
         case 'c':
         case 'C':
-            printf("Please enter account number:  ");
-            scanf("%d", &accountNumber);
-            closeAccount(accountNumber);
+            printf("Please enter account number: ");
+            if (scanf("%d", &accountNumber) == 1)
+            {
+                closeAccount(accountNumber);
+            }
+            else
+            {
+                printf("Failed to read the account number\n");
+            }
             break;
         case 'i':
         case 'I':
-            printf("Please enter interest rate:  ");
-            scanf("%f", &interestRate);
-            addingInterest(interestRate);
+            printf("Please enter interest rate: ");
+            if (scanf("%f", &interestRate) == 1)
+            {
+                addingInterest(interestRate);
+            }
+            else
+            {
+                printf("Failed to read the interest rate\n");
+            }
             break;
         case 'p':
         case 'P':
@@ -72,7 +120,7 @@ int main()
             condition = 0;
             break;
         default:
-            printf("Invalid command, please try another command.\n");
+            printf("Invalid transaction type\n");
         }
     }
     return 0;
