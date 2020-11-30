@@ -5,16 +5,35 @@
 float bank[50][2] = {{0}, {0}};
 int capacity = 0;
 
+int isOpen(int accountNumber)
+{
+    int index = accountNumber - SET_ACCOUNT_NUMBER;
+    if ((accountNumber > 950) || (accountNumber < 901))
+    {
+        printf("Invalid account number\n");
+        return 0;
+    }
+    else if (bank[index][0] == 0)
+    {
+        printf("This account is closed\n");
+        return 0;
+    }
+    else
+    {
+        return 1;
+    }
+}
+
 void openAccount(double amount)
 {
     if (capacity > 49)
     {
-        printf("We are apologies, the bank can not open new account in that moment.\n");
+        printf("We are apologies, the bank can not open new account in that moment\n");
         return;
     }
     if (amount < 0.0)
     {
-        printf("Err: you can not deposit a negative number.");
+        printf("Invalid Amount\n");
         return;
     }
     int temp;
@@ -29,18 +48,14 @@ void openAccount(double amount)
 
     bank[temp][0] = 1;
     bank[temp][1] = amount;
-    printf("Account created successfully, your account number is: %d\n", (temp + SET_ACCOUNT_NUMBER));
+    printf("New account number is: %d\n", (temp + SET_ACCOUNT_NUMBER));
     capacity++;
 }
 
 void checkBalance(int accountNumber)
 {
     int index = accountNumber - SET_ACCOUNT_NUMBER;
-    if ((accountNumber > 950) || (accountNumber < 901) || (bank[index][0] == 0))
-    {
-        printf("Err :This account number dont exsist.\n");
-    }
-    else
+    if (isOpen(accountNumber))
     {
         printf("The balance of account number %d is: %.2f\n", accountNumber, bank[index][1]);
     }
@@ -49,60 +64,61 @@ void checkBalance(int accountNumber)
 void withdrawal(int accountNumber, double amount)
 {
     int index = accountNumber - SET_ACCOUNT_NUMBER;
-    if ((accountNumber > 950) || (accountNumber < 901) || (bank[index][0] == 0))
+    if (isOpen(accountNumber))
     {
-        printf("Err: This account number dont exsist.\n");
-    }
-    else if (bank[index][1] < amount)
-    {
-        printf("Err: You do not have enough money to make the withdrawal\n");
-    }
-    else
-    {
-        bank[index][1] -= amount;
-        printf("The withdrawal was made successfully! The updated amount of account number %d is %.2f. \n", accountNumber, bank[index][1]);
+        if (bank[index][1] < amount)
+        {
+            printf("Err: You do not have enough money to make the withdrawal\n");
+        }
+        else
+        {
+            bank[index][1] -= amount;
+            printf("The new balance is: %.2f\n", bank[index][1]);
+        }
     }
 }
 
 void deposit(int accountNumber, double amount)
 {
     int index = accountNumber - SET_ACCOUNT_NUMBER;
-    if ((accountNumber > 950) || (accountNumber < 901) || (bank[index][0] == 0))
+    if (isOpen(accountNumber))
     {
-        printf("Err: This account number dont exsist.\n");
-    }
-    else if (amount < 0)
-    {
-        printf("You can not put negative amount, if you want to withdrawal you can do it in a place designated for this.");
-    }
-    else
-    {
-        bank[index][1] += amount;
-        printf("The deposit was made successfully! The updated amount of account number %d is %.2f. \n", accountNumber, bank[index][1]);
+        if (amount < 0)
+        {
+            printf("Cannot deposit a negative amount\n");
+        }
+        else
+        {
+            bank[index][1] += amount;
+            printf("The new balance is: %.2f\n", bank[index][1]);
+        }
     }
 }
 
 void closeAccount(int accountNumber)
 {
     int index = accountNumber - SET_ACCOUNT_NUMBER;
-    if ((accountNumber > 950) || (accountNumber < 901) || (bank[index][0] == 0))
+    if ((accountNumber > 950) || (accountNumber < 901))
     {
-        printf("Err: This acount number dont exsist.\n");
+        printf("Invalid account number\n");
+    }
+    else if (bank[index][0] == 0)
+    {
+        printf("This account is already closed\n");
     }
     else
     {
         bank[index][0] = 0;
-        printf("Account number %d successfully closed!\n", accountNumber);
+        printf("Closed account number %d\n", accountNumber);
         capacity--;
     }
 }
 
-void addingInterest(float interestRate)
-
+void addingInterest(int interestRate)
 {
     if (interestRate < 0)
     {
-        printf("The value entered is incorrect! Please try again.\n");
+        printf("Invalid interest rate\n");
         return;
     }
     float per = 1 + (interestRate / 100.0);
@@ -113,23 +129,14 @@ void addingInterest(float interestRate)
             bank[i][1] *= per;
         }
     }
-    printf("The interest rate was added successfully!\n");
 }
 
 void printAllOpenAccounts()
 {
-    int temp = 0;
     for (int i = 0; i < 50; i++)
     {
         if (bank[i][0] != 0)
-        {
-            temp = 1;
-            printf("The amount in account number %d is: %.2f\n", (i + SET_ACCOUNT_NUMBER), bank[i][1]);
-        }
-    }
-    if (temp == 0)
-    {
-        printf("No accounts are open.\n");
+            printf("The balance of account number %d is: %.2f\n", (i + SET_ACCOUNT_NUMBER), bank[i][1]);
     }
 }
 
@@ -139,5 +146,4 @@ void closeAllAccounts()
     {
         bank[i][0] = 0;
     }
-    printf("All accounts have been closed. Bye Bye\n");
 }

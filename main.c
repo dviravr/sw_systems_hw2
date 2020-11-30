@@ -6,25 +6,25 @@ int main()
     int condition = 1;
     while (condition)
     {
-        int accountNumber;
+        int accountNumber, interestRate;
         double amount;
-        float interestRate;
+        // float interestRate;
         char command;
         printf("\nPlease choose a transaction type:\n"
-               "O-Open Account\n"
-               "B-Balance Inquiry\n"
-               "D-Deposit\n"
-               "W-Withdrawal\n"
-               "C-Close Account\n"
-               "I-Interest\n"
-               "P-Print\n"
-               "E-Exit\n");
+               " O-Open Account\n"
+               " B-Balance Inquiry\n"
+               " D-Deposit\n"
+               " W-Withdrawal\n"
+               " C-Close Account\n"
+               " I-Interest\n"
+               " P-Print\n"
+               " E-Exit\n");
         scanf(" %c", &command);
+        // printf("%c\n",command);
         switch (command)
         {
-        case 'o':
         case 'O':
-            printf("Please enter amount for initial deposit: ");
+            printf("Please enter amount for deposit: ");
             if (scanf("%lf", &amount) == 1)
             {
                 openAccount(amount);
@@ -34,7 +34,6 @@ int main()
                 printf("Failed to read the amount\n");
             }
             break;
-        case 'b':
         case 'B':
             printf("Please enter account number: ");
             if (scanf("%d", &accountNumber) == 1)
@@ -46,19 +45,21 @@ int main()
                 printf("Failed to read the account number\n");
             }
             break;
-        case 'd':
         case 'D':
             printf("Please enter account number: ");
             if (scanf("%d", &accountNumber) == 1)
             {
-                printf("Please enter the amount to deposit: ");
-                if (scanf("%lf", &amount) == 1)
+                if (isOpen(accountNumber))
                 {
-                    deposit(accountNumber, amount);
-                }
-                else
-                {
-                    printf("Failed to read the amount\n");
+                    printf("Please enter the amount to deposit: ");
+                    if (scanf("%lf", &amount) == 1)
+                    {
+                        deposit(accountNumber, amount);
+                    }
+                    else
+                    {
+                        printf("Failed to read the amount\n");
+                    }
                 }
             }
             else
@@ -66,19 +67,21 @@ int main()
                 printf("Failed to read the account number\n");
             }
             break;
-        case 'w':
         case 'W':
             printf("Please enter account number: ");
             if (scanf("%d", &accountNumber) == 1)
             {
-                printf("Please enter the amount to withdraw: ");
-                if (scanf("%lf", &amount) == 1)
+                if (isOpen(accountNumber))
                 {
-                    withdrawal(accountNumber, amount);
-                }
-                else
-                {
-                    printf("Failed to read the amount\n");
+                    printf("Please enter the amount to withdraw: ");
+                    if (scanf("%lf", &amount) == 1)
+                    {
+                        withdrawal(accountNumber, amount);
+                    }
+                    else
+                    {
+                        printf("Failed to read the amount\n");
+                    }
                 }
             }
             else
@@ -86,7 +89,6 @@ int main()
                 printf("Failed to read the account number\n");
             }
             break;
-        case 'c':
         case 'C':
             printf("Please enter account number: ");
             if (scanf("%d", &accountNumber) == 1)
@@ -98,10 +100,9 @@ int main()
                 printf("Failed to read the account number\n");
             }
             break;
-        case 'i':
         case 'I':
             printf("Please enter interest rate: ");
-            if (scanf("%f", &interestRate) == 1)
+            if (scanf("%d", &interestRate) == 1)
             {
                 addingInterest(interestRate);
             }
@@ -110,11 +111,9 @@ int main()
                 printf("Failed to read the interest rate\n");
             }
             break;
-        case 'p':
         case 'P':
             printAllOpenAccounts();
             break;
-        case 'e':
         case 'E':
             closeAllAccounts();
             condition = 0;
