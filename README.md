@@ -21,7 +21,7 @@ Please choose a transaction type:
 
 first you need to download the code from gitHub.
 you can open the commad line in your computer and write:
-```git clone ```
+```git clone https://github.com/dviravr/sw_systems_hw2.git ```
 
 after that you need to compile the pogram. 
 we make for this make file so yoy can writr in your command line 
