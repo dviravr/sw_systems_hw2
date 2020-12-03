@@ -48,7 +48,7 @@ void openAccount(double amount)
 
     bank[temp][0] = 1;
     bank[temp][1] = amount;
-    printf("New account number is: %d\n", (temp + SET_ACCOUNT_NUMBER));
+    printf("New account number is: %d \n", (temp + SET_ACCOUNT_NUMBER));
     capacity++;
 }
 
@@ -68,7 +68,7 @@ void withdrawal(int accountNumber, double amount)
     {
         if (bank[index][1] < amount)
         {
-            printf("Err: You do not have enough money to make the withdrawal\n");
+            printf("Cannot withdraw more than the balance\n");
         }
         else
         {
