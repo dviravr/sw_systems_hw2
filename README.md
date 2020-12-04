@@ -1,6 +1,6 @@
 # sw_systems_hw2
 
-this reposotory was given as an assignment in a systems programming course at Ariel University.
+This reposotory was given as an assignment in a systems programming course at Ariel University.
 
 The assignment was to build a bank containing 50 accounts. 
 And you can do the following by tapping the appropriate character: 
